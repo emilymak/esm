@@ -218,6 +218,9 @@ def main(args):
                 )
 
     df.to_csv(args.dms_output)
+    with open('/content/gdrive/My Drive/emi_igg_labeled.txt', 'w') as df:
+        df.write('content')
+    
 
 
 if __name__ == "__main__":

@@ -25,7 +25,7 @@ for i in data.index:
 
 alph_sorted = list('ACDEFGHIKLMNPQRSTVWY')
 mutation = []
-for i in np.arange(115,1):
+for i in np.arange(115):
     wt_res = wt[i]
     for ii in alph_sorted:
         mutation.append([''.join([wt_res, str(i), str(ii)])])

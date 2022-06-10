@@ -218,8 +218,7 @@ def main(args):
                 )
 
     df.to_csv(args.dms_output)
-    df.to_csv('/gdrive/My Drive/emi_igg_labeled.csv')
-
+    return df
     
 
 

@@ -11,7 +11,7 @@ import scipy as sc
 from scipy import spatial
 
 data = pd.read_csv("C:\\Users\\makow\\Documents\\GitHub\\esm\\examples\\variant-prediction\\igg_binding.csv", header = 0, index_col = 0)
-wt = list(str(data.index[8]))
+wt = list('QVQLVQSGAEVKKPGASVKVSCKASGYTFTDYYMHWVRQAPGQGLEWMGRVNPNGRGTTYNQKFEGRVTMTTDTSTSTAYMELRSLRSDDTAVYYCARSNLLDDWGQGTTVTVSS')
 
 mutation = []
 for i in data.index:
@@ -25,7 +25,7 @@ for i in data.index:
 
 alph_sorted = list('ACDEFGHIKLMNPQRSTVWY')
 mutation = []
-for i in np.arange(32,104,1):
+for i in np.arange(115,1):
     wt_res = wt[i]
     for ii in alph_sorted:
         mutation.append([''.join([wt_res, str(i), str(ii)])])

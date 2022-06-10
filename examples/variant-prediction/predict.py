@@ -25,8 +25,8 @@ def read_msa(filename: str, nseq: int) -> List[Tuple[str, str]]:
     ]
     msa = [(desc, seq.upper()) for desc, seq in msa]
     return msa
-
-
+    
+    
 def create_parser():
     parser = argparse.ArgumentParser(
         description="Label a deep mutational scan with predictions from an ensemble of ESM-1v models."  # noqa
@@ -176,7 +176,7 @@ def main(args):
 
             if args.scoring_strategy == "wt-marginals":
                 with torch.no_grad():
-                    token_probs = torch.log_softmax(model(batch_tokens.cuda())["logits"], dim=-1)
+                    token_probs = torch.log_softmax(model(batch_tokens)["logits"], dim=-1)
                 df[model_location] = df.apply(
                     lambda row: label_row(
                         row[args.mutation_col],
@@ -194,7 +194,7 @@ def main(args):
                     batch_tokens_masked[0, i] = alphabet.mask_idx
                     with torch.no_grad():
                         token_probs = torch.log_softmax(
-                            model(batch_tokens_masked.cuda())["logits"], dim=-1
+                            model(batch_tokens_masked)["logits"], dim=-1
                         )
                     all_token_probs.append(token_probs[:, i])  # vocab size
                 token_probs = torch.cat(all_token_probs, dim=0).unsqueeze(0)
@@ -224,3 +224,11 @@ if __name__ == "__main__":
     parser = create_parser()
     args = parser.parse_args()
     main(args)
+
+
+
+
+
+
+
+    
